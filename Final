@@ -1,0 +1,65 @@
+import java.util.Scanner;
+
+public class Inicio {
+
+	public static void main(String[] args) {
+		Scanner entrada = new Scanner(System.in);
+		String nombre;
+		int nivel, compa, corr = 0, inco = 0;
+		int ir = 0, n1 = 0, n2 = 0, mul = 0;
+
+		System.out.println("Bienvenido al Juego Tablas Locas ");
+		System.out.println("");
+		System.out.println("Ingresa tu nombre, te queremos conocer");
+		nombre = entrada.nextLine();
+		System.out.println("Tenemos para ti tres nivel ingresa en el que quieres jugar");
+		System.out.println("1- Facil 2-Medio 3- Dificil");
+		nivel = entrada.nextInt();
+		if (nivelde(nivel) == 0) {
+			System.out.println("no tenemos niveles disponibles");
+		} else {
+			while (ir < 3) {
+				ir++;
+				n1 = nivelde(nivel);
+				n2 = nivelde(nivel);
+				mul = n1 * n2;
+				System.out.println("El ejercicio #"+ir +" es: "+n1 + " * " + n2 + "= ");
+				compa = entrada.nextInt();
+				if (compa == mul) {
+					System.out.println("Correcto, tu resultado es super vas bien");
+					corr++;
+				} else {
+					System.out.println("Incorrecto, el resultado es: "+ mul);
+					inco++;
+				}
+
+			}
+			if (corr>inco) {
+				System.out.println("Tu resultado, " + nombre + ", fue de " + corr + " Correcta(s) y " + inco + " Incorrecta(s)");
+				System.out.println("Queremos felicitarte avanza al siguiente nivel");
+			}else {
+			System.out.println("Tu resultado, " + nombre + ", fue de " + corr + " Correcta(s) y " + inco + " Incorrecta(s)");
+			System.out.println("Te recomendamos seguir intentando para mejorar");
+			}
+		}
+
+		
+
+	}
+
+	public static int nivelde(int h) {
+		int st = 0;
+		if (h == 1) {
+			st = (int) (Math.random() * 7 + 1);
+		} else if (h == 2) {
+			st = (int) (Math.random() * (15 - 8 + 1) + 8);
+		} else if (h == 3) {
+			st = (int) (Math.random() * (21 - 16 + 1) + 16);
+		} else {
+			return 0;
+		}
+
+		return st;
+	}
+
+}
